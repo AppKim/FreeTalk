@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lXH-Lb-DbW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="DBL-vu-Vde">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lXH-Lb-DbW" customClass="ChatViewController" customModule="FreeTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3zh-QO-9Mq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60x-fu-ka6">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR7-3b-4vs">
+                                        <rect key="frame" x="390" y="0.0" width="24" height="50"/>
+                                        <state key="normal" image="baseline_send_black_24pt_1x"/>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qo4-nV-uSY">
+                                        <rect key="frame" x="5" y="5" width="380" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="XB2-DQ-cra"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qo4-nV-uSY" firstAttribute="leading" secondItem="60x-fu-ka6" secondAttribute="leading" constant="5" id="45d-91-TwU"/>
+                                    <constraint firstItem="cR7-3b-4vs" firstAttribute="leading" secondItem="qo4-nV-uSY" secondAttribute="trailing" constant="5" id="T3r-4i-kiD"/>
+                                    <constraint firstItem="qo4-nV-uSY" firstAttribute="top" secondItem="60x-fu-ka6" secondAttribute="top" constant="5" id="Wdr-j1-JiE"/>
+                                    <constraint firstAttribute="bottom" secondItem="qo4-nV-uSY" secondAttribute="bottom" constant="5" id="YIv-Du-EGU"/>
+                                    <constraint firstAttribute="bottom" secondItem="cR7-3b-4vs" secondAttribute="bottom" id="c0I-VT-9he"/>
+                                    <constraint firstAttribute="height" constant="50" id="ldV-On-y4e"/>
+                                    <constraint firstAttribute="trailing" secondItem="cR7-3b-4vs" secondAttribute="trailing" id="mXb-T6-lnY"/>
+                                    <constraint firstItem="cR7-3b-4vs" firstAttribute="top" secondItem="60x-fu-ka6" secondAttribute="top" id="nCA-iN-qde"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YAG-Fm-Gak">
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lXH-Lb-DbW" id="Jwm-HH-XsW"/>
+                                    <outlet property="delegate" destination="lXH-Lb-DbW" id="ypu-K0-zhh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="60x-fu-ka6" firstAttribute="leading" secondItem="hXs-5c-Fhy" secondAttribute="leading" id="2oc-4j-GKv"/>
+                            <constraint firstItem="hXs-5c-Fhy" firstAttribute="trailing" secondItem="60x-fu-ka6" secondAttribute="trailing" id="Vhn-DH-3cf"/>
+                            <constraint firstItem="YAG-Fm-Gak" firstAttribute="leading" secondItem="hXs-5c-Fhy" secondAttribute="leading" id="fD2-O2-lTa"/>
+                            <constraint firstItem="60x-fu-ka6" firstAttribute="top" secondItem="YAG-Fm-Gak" secondAttribute="bottom" id="hjY-TJ-HRo"/>
+                            <constraint firstItem="hXs-5c-Fhy" firstAttribute="trailing" secondItem="YAG-Fm-Gak" secondAttribute="trailing" id="lX7-8N-FCr"/>
+                            <constraint firstItem="60x-fu-ka6" firstAttribute="bottom" secondItem="hXs-5c-Fhy" secondAttribute="bottom" id="oiQ-oQ-t4W"/>
+                            <constraint firstItem="YAG-Fm-Gak" firstAttribute="top" secondItem="hXs-5c-Fhy" secondAttribute="top" id="zqn-9p-hXl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hXs-5c-Fhy"/>
+                    </view>
+                    <connections>
+                        <outlet property="chatTableView" destination="YAG-Fm-Gak" id="JvQ-0k-vEh"/>
+                        <outlet property="inputMessageHeight" destination="XB2-DQ-cra" id="XUQ-4V-WaM"/>
+                        <outlet property="inputMessageView" destination="oiQ-oQ-t4W" id="zeY-Ey-zSV"/>
+                        <outlet property="message" destination="qo4-nV-uSY" id="bWu-RS-nGF"/>
+                        <outlet property="sendButton" destination="cR7-3b-4vs" id="CjB-8y-hrm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H4p-Vj-2tz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36.231884057971016" y="60.9375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="baseline_send_black_24pt_1x" width="24" height="24"/>
+    </resources>
+</document>

@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F0E7C1F24644CEB0022A2A3 /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E7C1D24644CEB0022A2A3 /* MyMessageCell.swift */; };
+		0F0E7C2024644CEB0022A2A3 /* MyMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E7C1E24644CEB0022A2A3 /* MyMessageCell.xib */; };
+		0F0E7C2324644D170022A2A3 /* DestinationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E7C2124644D170022A2A3 /* DestinationMessageCell.swift */; };
+		0F0E7C2424644D170022A2A3 /* DestinationMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0E7C2224644D170022A2A3 /* DestinationMessageCell.xib */; };
+		0F1AF34C24607A8500CB6965 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1AF34B24607A8500CB6965 /* PeopleViewController.swift */; };
+		0F1AF34E24607A9800CB6965 /* MainViewTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F1AF34D24607A9800CB6965 /* MainViewTabBarController.storyboard */; };
+		0F766031245BBFDC00ABE677 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F766030245BBFDC00ABE677 /* SignUpViewController.swift */; };
+		0F766033245BBFF200ABE677 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F766032245BBFF200ABE677 /* SignUpViewController.storyboard */; };
+		0F7CAA9324597E1E0051B9E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7CAA9224597E1E0051B9E2 /* AppDelegate.swift */; };
+		0F7CAA9524597E1E0051B9E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7CAA9424597E1E0051B9E2 /* SceneDelegate.swift */; };
+		0F7CAA9724597E1E0051B9E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7CAA9624597E1E0051B9E2 /* ViewController.swift */; };
+		0F7CAA9A24597E1E0051B9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7CAA9824597E1E0051B9E2 /* Main.storyboard */; };
+		0F7CAA9C24597E200051B9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F7CAA9B24597E200051B9E2 /* Assets.xcassets */; };
+		0F7CAA9F24597E200051B9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7CAA9D24597E200051B9E2 /* LaunchScreen.storyboard */; };
+		0F7CAAA9245983A30051B9E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F7CAAA8245983A30051B9E2 /* GoogleService-Info.plist */; };
+		0F7F0DE4245BAD36006A57BB /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7F0DE3245BAD36006A57BB /* LoginViewController.storyboard */; };
+		0F8D4CD524614CBF0024346D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D4CD424614CBF0024346D /* UserModel.swift */; };
+		0FB7E4022461B9740085216B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7E4012461B9740085216B /* ChatViewController.swift */; };
+		0FB7E4042461B97C0085216B /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB7E4032461B97C0085216B /* ChatViewController.storyboard */; };
+		0FB7E4072461BE3A0085216B /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7E4062461BE3A0085216B /* ChatModel.swift */; };
+		0FC32FC5245BACA9006B3CAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */; };
+		0FE55E322459B77E00E06C01 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */; };
+		536B354CC9D24462EA842F5C /* Pods_FreeTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF8525EB5320E654DB02A39 /* Pods_FreeTalk.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F0E7C1D24644CEB0022A2A3 /* MyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
+		0F0E7C1E24644CEB0022A2A3 /* MyMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessageCell.xib; sourceTree = "<group>"; };
+		0F0E7C2124644D170022A2A3 /* DestinationMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationMessageCell.swift; sourceTree = "<group>"; };
+		0F0E7C2224644D170022A2A3 /* DestinationMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationMessageCell.xib; sourceTree = "<group>"; };
+		0F1AF34B24607A8500CB6965 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		0F1AF34D24607A9800CB6965 /* MainViewTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewTabBarController.storyboard; sourceTree = "<group>"; };
+		0F766030245BBFDC00ABE677 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0F766032245BBFF200ABE677 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
+		0F7CAA8F24597E1E0051B9E2 /* FreeTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F7CAA9224597E1E0051B9E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0F7CAA9424597E1E0051B9E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0F7CAA9624597E1E0051B9E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F7CAA9924597E1E0051B9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0F7CAA9B24597E200051B9E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F7CAA9E24597E200051B9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0F7CAAA024597E200051B9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F7CAAA8245983A30051B9E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0F7F0DE3245BAD36006A57BB /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		0F8D4CD424614CBF0024346D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		0FB7E4012461B9740085216B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0FB7E4032461B97C0085216B /* ChatViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatViewController.storyboard; sourceTree = "<group>"; };
+		0FB7E4062461BE3A0085216B /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0FE337E4245F2AFA00F3177C /* FreeTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FreeTalk.entitlements; sourceTree = "<group>"; };
+		0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		5CF8525EB5320E654DB02A39 /* Pods_FreeTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73299FB45B15DCD31B19AE31 /* Pods-FreeTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeTalk.release.xcconfig"; path = "Target Support Files/Pods-FreeTalk/Pods-FreeTalk.release.xcconfig"; sourceTree = "<group>"; };
+		B54A403EA26981A7512EE420 /* Pods-FreeTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeTalk.debug.xcconfig"; path = "Target Support Files/Pods-FreeTalk/Pods-FreeTalk.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0F7CAA8C24597E1E0051B9E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				536B354CC9D24462EA842F5C /* Pods_FreeTalk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F7CAA8624597E1E0051B9E2 = {
+			isa = PBXGroup;
+			children = (
+				0F7CAA9124597E1E0051B9E2 /* FreeTalk */,
+				0F7CAA9024597E1E0051B9E2 /* Products */,
+				F6D9605D54B1CF7ABEB3BEB5 /* Pods */,
+				2802EA3B727E161C73400A50 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0F7CAA9024597E1E0051B9E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F7CAA8F24597E1E0051B9E2 /* FreeTalk.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0F7CAA9124597E1E0051B9E2 /* FreeTalk */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7E4052461BE050085216B /* Model */,
+				0FE337E4245F2AFA00F3177C /* FreeTalk.entitlements */,
+				0F7CAAA8245983A30051B9E2 /* GoogleService-Info.plist */,
+				0F7CAA9224597E1E0051B9E2 /* AppDelegate.swift */,
+				0F7CAA9424597E1E0051B9E2 /* SceneDelegate.swift */,
+				0F7CAA9624597E1E0051B9E2 /* ViewController.swift */,
+				0F7CAA9824597E1E0051B9E2 /* Main.storyboard */,
+				0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */,
+				0F7F0DE3245BAD36006A57BB /* LoginViewController.storyboard */,
+				0F766030245BBFDC00ABE677 /* SignUpViewController.swift */,
+				0F766032245BBFF200ABE677 /* SignUpViewController.storyboard */,
+				0F1AF34B24607A8500CB6965 /* PeopleViewController.swift */,
+				0F1AF34D24607A9800CB6965 /* MainViewTabBarController.storyboard */,
+				0F0E7C1D24644CEB0022A2A3 /* MyMessageCell.swift */,
+				0F0E7C1E24644CEB0022A2A3 /* MyMessageCell.xib */,
+				0F0E7C2124644D170022A2A3 /* DestinationMessageCell.swift */,
+				0F0E7C2224644D170022A2A3 /* DestinationMessageCell.xib */,
+				0FB7E4012461B9740085216B /* ChatViewController.swift */,
+				0FB7E4032461B97C0085216B /* ChatViewController.storyboard */,
+				0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */,
+				0F7CAA9D24597E200051B9E2 /* LaunchScreen.storyboard */,
+				0F7CAA9B24597E200051B9E2 /* Assets.xcassets */,
+				0F7CAAA024597E200051B9E2 /* Info.plist */,
+			);
+			path = FreeTalk;
+			sourceTree = "<group>";
+		};
+		0FB7E4052461BE050085216B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F8D4CD424614CBF0024346D /* UserModel.swift */,
+				0FB7E4062461BE3A0085216B /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2802EA3B727E161C73400A50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CF8525EB5320E654DB02A39 /* Pods_FreeTalk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6D9605D54B1CF7ABEB3BEB5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B54A403EA26981A7512EE420 /* Pods-FreeTalk.debug.xcconfig */,
+				73299FB45B15DCD31B19AE31 /* Pods-FreeTalk.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F7CAA8E24597E1E0051B9E2 /* FreeTalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F7CAAA324597E200051B9E2 /* Build configuration list for PBXNativeTarget "FreeTalk" */;
+			buildPhases = (
+				E3EE0EFDE0B6E78E52D93075 /* [CP] Check Pods Manifest.lock */,
+				0F7CAA8B24597E1E0051B9E2 /* Sources */,
+				0F7CAA8C24597E1E0051B9E2 /* Frameworks */,
+				0F7CAA8D24597E1E0051B9E2 /* Resources */,
+				74A91E58788410879B99C4E7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FreeTalk;
+			productName = FreeTalk;
+			productReference = 0F7CAA8F24597E1E0051B9E2 /* FreeTalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0F7CAA8724597E1E0051B9E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = swift;
+				TargetAttributes = {
+					0F7CAA8E24597E1E0051B9E2 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 0F7CAA8A24597E1E0051B9E2 /* Build configuration list for PBXProject "FreeTalk" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0F7CAA8624597E1E0051B9E2;
+			productRefGroup = 0F7CAA9024597E1E0051B9E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F7CAA8E24597E1E0051B9E2 /* FreeTalk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F7CAA8D24597E1E0051B9E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F1AF34E24607A9800CB6965 /* MainViewTabBarController.storyboard in Resources */,
+				0FB7E4042461B97C0085216B /* ChatViewController.storyboard in Resources */,
+				0F7CAA9F24597E200051B9E2 /* LaunchScreen.storyboard in Resources */,
+				0F0E7C2024644CEB0022A2A3 /* MyMessageCell.xib in Resources */,
+				0F0E7C2424644D170022A2A3 /* DestinationMessageCell.xib in Resources */,
+				0FE55E322459B77E00E06C01 /* RemoteConfigDefaults.plist in Resources */,
+				0F7CAAA9245983A30051B9E2 /* GoogleService-Info.plist in Resources */,
+				0F7F0DE4245BAD36006A57BB /* LoginViewController.storyboard in Resources */,
+				0F766033245BBFF200ABE677 /* SignUpViewController.storyboard in Resources */,
+				0F7CAA9C24597E200051B9E2 /* Assets.xcassets in Resources */,
+				0F7CAA9A24597E1E0051B9E2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		74A91E58788410879B99C4E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FreeTalk/Pods-FreeTalk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FreeTalk/Pods-FreeTalk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FreeTalk/Pods-FreeTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3EE0EFDE0B6E78E52D93075 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FreeTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F7CAA8B24597E1E0051B9E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC32FC5245BACA9006B3CAA /* LoginViewController.swift in Sources */,
+				0F8D4CD524614CBF0024346D /* UserModel.swift in Sources */,
+				0FB7E4022461B9740085216B /* ChatViewController.swift in Sources */,
+				0F0E7C2324644D170022A2A3 /* DestinationMessageCell.swift in Sources */,
+				0F0E7C1F24644CEB0022A2A3 /* MyMessageCell.swift in Sources */,
+				0F7CAA9724597E1E0051B9E2 /* ViewController.swift in Sources */,
+				0F7CAA9324597E1E0051B9E2 /* AppDelegate.swift in Sources */,
+				0F1AF34C24607A8500CB6965 /* PeopleViewController.swift in Sources */,
+				0F7CAA9524597E1E0051B9E2 /* SceneDelegate.swift in Sources */,
+				0F766031245BBFDC00ABE677 /* SignUpViewController.swift in Sources */,
+				0FB7E4072461BE3A0085216B /* ChatModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0F7CAA9824597E1E0051B9E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F7CAA9924597E1E0051B9E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0F7CAA9D24597E200051B9E2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F7CAA9E24597E200051B9E2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0F7CAAA124597E200051B9E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0F7CAAA224597E200051B9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0F7CAAA424597E200051B9E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B54A403EA26981A7512EE420 /* Pods-FreeTalk.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FreeTalk/FreeTalk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WQFJYD3SUF;
+				INFOPLIST_FILE = FreeTalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.jp.JKdeveloper.FreeTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F7CAAA524597E200051B9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73299FB45B15DCD31B19AE31 /* Pods-FreeTalk.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FreeTalk/FreeTalk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WQFJYD3SUF;
+				INFOPLIST_FILE = FreeTalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.jp.JKdeveloper.FreeTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F7CAA8A24597E1E0051B9E2 /* Build configuration list for PBXProject "FreeTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F7CAAA124597E200051B9E2 /* Debug */,
+				0F7CAAA224597E200051B9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F7CAAA324597E200051B9E2 /* Build configuration list for PBXNativeTarget "FreeTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F7CAAA424597E200051B9E2 /* Debug */,
+				0F7CAAA524597E200051B9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0F7CAA8724597E1E0051B9E2 /* Project object */;
+}

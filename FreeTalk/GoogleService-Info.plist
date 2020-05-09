@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>433509434788-l5qrsm2k3b417p1jbq93vtqh0m37hg2o.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.433509434788-l5qrsm2k3b417p1jbq93vtqh0m37hg2o</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB3ApQ2WVyWJcbeSVb9Bz_e5dFMdXMKuvY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>433509434788</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>co.jp.JKdeveloper.FreeTalk</string>
+	<key>PROJECT_ID</key>
+	<string>freetalk-d8ddf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>freetalk-d8ddf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:433509434788:ios:e28bef3b76e3288000ed31</string>
+	<key>DATABASE_URL</key>
+	<string>https://freetalk-d8ddf.firebaseio.com</string>
+</dict>
+</plist>
