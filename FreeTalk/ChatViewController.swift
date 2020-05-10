@@ -44,7 +44,8 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         checkChatRoom()
         
-        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+        //sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+        sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
     
     // 종료
@@ -87,52 +88,73 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     @objc func createRoom(){
-        
         let createRoomInfo : Dictionary<String,Any> = [
             "users": [
                 uid:true,
                 destinationUid:true
             ]
         ]
-        
-        let chatContent : Dictionary<String,Any> = [
-                "uid":uid!,
-                "message":message.text!
-        ]
-        
-        if chatRoomUid == nil {
+        /*
+         let chatContent : Dictionary<String,Any> = [
+         "uid":uid!,
+         "message":message.text!
+         ]*/
+        //if chatRoomUid == nil {
             
-            self.sendButton.isEnabled = false
+            //self.sendButton.isEnabled = false
             databasesRef.childByAutoId().setValue(createRoomInfo) { (error, ref) in
                 if error == nil {
-                    self.checkChatRoom()
+                    //self.checkChatRoom()
                 }
             }
-        }else{
-            databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
-                if error == nil {
-                    
-                }
+        //}
+        /*else{
+         databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
+         if error == nil {
+         
+         }
+         }
+         }
+         */
+    }
+    
+    @objc func sendMessage(){
+        let chatContent : Dictionary<String,Any> = [
+            "uid":uid!,
+            "message":message.text!
+        ]
+        databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
+            if error == nil {
+                
             }
         }
-        
     }
+    
     
     func checkChatRoom(){
         databasesRef.queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: .value,with:  { (datasnapshot) in
-            for item in datasnapshot.children.allObjects as! [DataSnapshot] {
-                
-                if let chatRoomdic = item.value as? [String:AnyObject]{
+            if datasnapshot.value is NSNull{
+                self.createRoom()
+            }else {
+                for item in datasnapshot.children.allObjects as! [DataSnapshot] {
                     
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    
-                    if chatModel?.users[self.destinationUid!] == true {
+                    if let chatRoomdic = item.value as? [String:AnyObject]{
                         
-                        self.chatRoomUid  = item.key
-                        self.sendButton.isEnabled = true
-                        self.getDestinationInfo()
-
+                        let chatModel = ChatModel(JSON: chatRoomdic)
+                        print(chatModel?.users)
+                        
+                        if chatModel?.users[self.destinationUid!] == true {
+                            
+                            self.chatRoomUid  = item.key
+                            //self.sendButton.isEnabled = true
+                            self.getDestinationInfo()
+                            break
+                        }
                     }
+                }
+                if self.chatRoomUid == nil {
+                    self.createRoom()
+                    print("createRoom")
                 }
             }
         })
@@ -145,7 +167,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.userModel = UserModel()
             self.userModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
             self.getMessageList()
-          
+            
         })
     }
     
@@ -163,15 +185,15 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         })
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
