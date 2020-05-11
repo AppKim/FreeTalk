@@ -33,25 +33,31 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         
         chatTableView.separatorStyle = .none
         
         chatTableView.register(UINib(nibName: "MyMessageCell", bundle: nil), forCellReuseIdentifier: "MyMessageCell")
         chatTableView.register(UINib(nibName: "DestinationMessageCell", bundle: nil), forCellReuseIdentifier: "DestinationMessageCell")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
         uid = Auth.auth().currentUser?.uid
         
         checkChatRoom()
+        initaializeHideKeyboard()
         
-        //sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
     
-    // 종료
-    override func viewDidAppear(_ animated: Bool) {
+    // 画面から非表示になる直前に呼ばれる。
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
         self.tabBarController?.tabBar.isHidden = false
     }
+        
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
@@ -94,28 +100,12 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 destinationUid:true
             ]
         ]
-        /*
-         let chatContent : Dictionary<String,Any> = [
-         "uid":uid!,
-         "message":message.text!
-         ]*/
-        //if chatRoomUid == nil {
-            
-            //self.sendButton.isEnabled = false
-            databasesRef.childByAutoId().setValue(createRoomInfo) { (error, ref) in
-                if error == nil {
-                    //self.checkChatRoom()
-                }
+        
+        databasesRef.childByAutoId().setValue(createRoomInfo) { (error, ref) in
+            if error == nil {
+                
             }
-        //}
-        /*else{
-         databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
-         if error == nil {
-         
-         }
-         }
-         }
-         */
+        }
     }
     
     @objc func sendMessage(){
@@ -123,9 +113,12 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             "uid":uid!,
             "message":message.text!
         ]
+        
         databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
             if error == nil {
-                
+                let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+                self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+                self.message.text = ""
             }
         }
     }
@@ -141,14 +134,13 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     if let chatRoomdic = item.value as? [String:AnyObject]{
                         
                         let chatModel = ChatModel(JSON: chatRoomdic)
-                        print(chatModel?.users)
                         
                         if chatModel?.users[self.destinationUid!] == true {
                             
                             self.chatRoomUid  = item.key
-                            //self.sendButton.isEnabled = true
                             self.getDestinationInfo()
                             break
+                            
                         }
                     }
                 }
@@ -182,7 +174,46 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 self.comments.append(comment!)
             }
             self.chatTableView.reloadData()
+            let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+            if self.comments.count > 0 {
+                self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+            }
         })
+    }
+    
+    func initaializeHideKeyboard(){
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification:Notification){
+        
+        let notiInfo = notification.userInfo!
+        let keyboardSize = notiInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let height = keyboardSize.height - self.view.safeAreaInsets.bottom
+        
+        let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.inputMessageView.constant = -height
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(notification:Notification){
+        
+        let notiInfo = notification.userInfo!
+        let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.inputMessageView.constant = 0
+            self.view.layoutIfNeeded()
+        }
     }
     
     
