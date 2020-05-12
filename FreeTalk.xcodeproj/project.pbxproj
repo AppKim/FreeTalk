@@ -29,6 +29,7 @@
 		0FB7E4072461BE3A0085216B /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7E4062461BE3A0085216B /* ChatModel.swift */; };
 		0FC32FC5245BACA9006B3CAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */; };
 		0FE55E322459B77E00E06C01 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */; };
+		0FFDF318246AE486006E3349 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */; };
 		536B354CC9D24462EA842F5C /* Pods_FreeTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF8525EB5320E654DB02A39 /* Pods_FreeTalk.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0FE337E4245F2AFA00F3177C /* FreeTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FreeTalk.entitlements; sourceTree = "<group>"; };
 		0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
 		5CF8525EB5320E654DB02A39 /* Pods_FreeTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73299FB45B15DCD31B19AE31 /* Pods-FreeTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeTalk.release.xcconfig"; path = "Target Support Files/Pods-FreeTalk/Pods-FreeTalk.release.xcconfig"; sourceTree = "<group>"; };
 		B54A403EA26981A7512EE420 /* Pods-FreeTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeTalk.debug.xcconfig"; path = "Target Support Files/Pods-FreeTalk/Pods-FreeTalk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				0F766032245BBFF200ABE677 /* SignUpViewController.storyboard */,
 				0F1AF34B24607A8500CB6965 /* PeopleViewController.swift */,
 				0F1AF34D24607A9800CB6965 /* MainViewTabBarController.storyboard */,
+				0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */,
 				0F0E7C1D24644CEB0022A2A3 /* MyMessageCell.swift */,
 				0F0E7C1E24644CEB0022A2A3 /* MyMessageCell.xib */,
 				0F0E7C2124644D170022A2A3 /* DestinationMessageCell.swift */,
@@ -279,6 +282,7 @@
 				0F0E7C1F24644CEB0022A2A3 /* MyMessageCell.swift in Sources */,
 				0F7CAA9724597E1E0051B9E2 /* ViewController.swift in Sources */,
 				0F7CAA9324597E1E0051B9E2 /* AppDelegate.swift in Sources */,
+				0FFDF318246AE486006E3349 /* ChatRoomsViewController.swift in Sources */,
 				0F1AF34C24607A8500CB6965 /* PeopleViewController.swift in Sources */,
 				0F7CAA9524597E1E0051B9E2 /* SceneDelegate.swift in Sources */,
 				0F766031245BBFDC00ABE677 /* SignUpViewController.swift in Sources */,
