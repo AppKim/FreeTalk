@@ -69,6 +69,7 @@
                 <outlet property="destinationImage" destination="OAO-KM-2Tq" id="FnD-Xf-aXi"/>
                 <outlet property="destinationMessage" destination="Imh-O1-YGs" id="5OF-p3-rRH"/>
                 <outlet property="destinationName" destination="qLd-jz-EFe" id="9cQ-vY-S6a"/>
+                <outlet property="timestamp" destination="Ptu-GJ-xXp" id="86k-M1-V2J"/>
             </connections>
             <point key="canvasLocation" x="159.42028985507247" y="128.90625"/>
         </tableViewCell>

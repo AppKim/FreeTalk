@@ -9,7 +9,16 @@
 import UIKit
 import Firebase
 
-
+extension Int {
+    
+    var toDayTime :String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
+        let date = Date(timeIntervalSince1970: Double(self)/1000)
+        return dateFormatter.string(from: date)
+    }
+}
 
 class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
@@ -43,7 +52,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        
+        self.sendButton.isEnabled = false
         uid = Auth.auth().currentUser?.uid
         
         checkChatRoom()
@@ -57,7 +66,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         NotificationCenter.default.removeObserver(self)
         self.tabBarController?.tabBar.isHidden = false
     }
-        
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
@@ -69,6 +78,9 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let myCell = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell",for: indexPath) as! MyMessageCell
             myCell.myMessage.text = self.comments[indexPath.row].message
             myCell.selectionStyle = .none
+            if let time  = self.comments[indexPath.row].timestamp {
+                myCell.timestamp.text = time.toDayTime
+            }
             return myCell
         }else{
             let destinationCell = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell",for: indexPath) as! DestinationMessageCell
@@ -88,6 +100,10 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 }
             }.resume()
             
+            if let time  = self.comments[indexPath.row].timestamp {
+                destinationCell.timestamp.text = time.toDayTime
+            }
+            
             return destinationCell
         }
     }
@@ -103,7 +119,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         databasesRef.childByAutoId().setValue(createRoomInfo) { (error, ref) in
             if error == nil {
-                
+                self.checkChatRoom()
             }
         }
     }
@@ -111,7 +127,8 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @objc func sendMessage(){
         let chatContent : Dictionary<String,Any> = [
             "uid":uid!,
-            "message":message.text!
+            "message":message.text!,
+            "timestamp": ServerValue.timestamp()
         ]
         
         databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
@@ -150,6 +167,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 }
             }
         })
+        self.sendButton.isEnabled = true
     }
     
     func getDestinationInfo(){

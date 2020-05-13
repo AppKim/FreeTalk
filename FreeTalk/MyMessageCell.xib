@@ -50,6 +50,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="myMessage" destination="zX6-BQ-Qvs" id="Wfj-Xa-EMZ"/>
+                <outlet property="timestamp" destination="AP6-RR-rNi" id="83N-d6-Wni"/>
             </connections>
             <point key="canvasLocation" x="143.47826086956522" y="121.54017857142857"/>
         </tableViewCell>
