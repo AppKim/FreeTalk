@@ -92,7 +92,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="PhY-SK-tOx" kind="relationship" relationship="viewControllers" id="HcY-WU-t1y"/>
-                        <segue destination="rXi-C9-uqm" kind="relationship" relationship="viewControllers" id="Qbv-Fa-KRw"/>
+                        <segue destination="Uvr-7D-tOU" kind="relationship" relationship="viewControllers" id="Qbv-Fa-KRw"/>
                         <segue destination="AjF-gk-Dqz" kind="relationship" relationship="viewControllers" id="8bM-an-RFp"/>
                     </connections>
                 </tabBarController>
@@ -100,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="82.608695652173921" y="6.6964285714285712"/>
         </scene>
-        <!--Chat-->
+        <!--Chat Rooms View Controller-->
         <scene sceneID="LHW-oF-aQV">
             <objects>
                 <viewController id="rXi-C9-uqm" customClass="ChatRoomsViewController" customModule="FreeTalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dp1-62-hKw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="123" id="TRq-ec-3FX" customClass="ChatCell" customModule="FreeTalk" customModuleProvider="target">
@@ -141,13 +141,13 @@
                                                         <constraint firstAttribute="width" constant="100" id="B3z-hm-faK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8L-x7-cFW">
                                                     <rect key="frame" x="100" y="70.5" width="294" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -186,37 +186,43 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KYD-0T-YQZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="baseline_chat_black_24pt" id="LAW-ML-WeS"/>
+                    <navigationItem key="navigationItem" id="bV7-Uf-Q3D"/>
                     <connections>
                         <outlet property="chatTableView" destination="dp1-62-hKw" id="vpl-LW-QO9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4o-a0-tmt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-620.28985507246387" y="857.8125"/>
+            <point key="canvasLocation" x="289.85507246376812" y="857.8125"/>
         </scene>
         <!--Account-->
         <scene sceneID="0SE-Gf-buw">
             <objects>
-                <viewController id="AjF-gk-Dqz" sceneMemberID="viewController">
+                <viewController id="AjF-gk-Dqz" customClass="AccountViewController" customModule="FreeTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K0G-ix-yMp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OPt-XZ-a3U">
-                                <rect key="frame" x="54" y="271" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SE-M0-7TI">
+                                <rect key="frame" x="130.5" y="124" width="153" height="30"/>
+                                <state key="normal" title="ステータスメッセージ"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9SE-M0-7TI" firstAttribute="centerX" secondItem="K0G-ix-yMp" secondAttribute="centerX" id="lbU-er-ffT"/>
+                            <constraint firstItem="9SE-M0-7TI" firstAttribute="top" secondItem="xsN-sV-Yrd" secondAttribute="top" constant="80" id="t2i-Q6-2uv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xsN-sV-Yrd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="baseline_account_circle_black_24pt" id="jeU-0d-4Ng"/>
+                    <connections>
+                        <outlet property="statusMessge" destination="9SE-M0-7TI" id="I9l-4W-f1U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpn-QG-9LJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="858"/>
+            <point key="canvasLocation" x="1705.7971014492755" y="857.8125"/>
         </scene>
         <!--People-->
         <scene sceneID="XPl-hh-P46">
@@ -236,6 +242,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VI1-bd-6qe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="992.75362318840587" y="6.6964285714285712"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="6sx-9a-g1g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uvr-7D-tOU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chat" image="baseline_chat_black_24pt" id="LAW-ML-WeS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G1E-gu-Nok">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rXi-C9-uqm" kind="relationship" relationship="rootViewController" id="v5R-b3-yAT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qmt-vg-WbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-620.28985507246387" y="857.8125"/>
         </scene>
     </scenes>
     <resources>

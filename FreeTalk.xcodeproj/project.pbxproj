@@ -28,6 +28,7 @@
 		0FB7E4042461B97C0085216B /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB7E4032461B97C0085216B /* ChatViewController.storyboard */; };
 		0FB7E4072461BE3A0085216B /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7E4062461BE3A0085216B /* ChatModel.swift */; };
 		0FC32FC5245BACA9006B3CAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */; };
+		0FCF7D7324718E00007DD819 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF7D7224718E00007DD819 /* AccountViewController.swift */; };
 		0FE55E322459B77E00E06C01 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */; };
 		0FFDF318246AE486006E3349 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */; };
 		536B354CC9D24462EA842F5C /* Pods_FreeTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF8525EB5320E654DB02A39 /* Pods_FreeTalk.framework */; };
@@ -57,6 +58,7 @@
 		0FB7E4032461B97C0085216B /* ChatViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatViewController.storyboard; sourceTree = "<group>"; };
 		0FB7E4062461BE3A0085216B /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0FC32FC4245BACA9006B3CAA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0FCF7D7224718E00007DD819 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		0FE337E4245F2AFA00F3177C /* FreeTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FreeTalk.entitlements; sourceTree = "<group>"; };
 		0FE55E312459B77E00E06C01 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		0F7CAA9124597E1E0051B9E2 /* FreeTalk */ = {
 			isa = PBXGroup;
 			children = (
+				0FCF7D7424718E1B007DD819 /* TabBar */,
 				0FB7E4052461BE050085216B /* Model */,
 				0FE337E4245F2AFA00F3177C /* FreeTalk.entitlements */,
 				0F7CAAA8245983A30051B9E2 /* GoogleService-Info.plist */,
@@ -112,6 +115,7 @@
 				0F1AF34B24607A8500CB6965 /* PeopleViewController.swift */,
 				0F1AF34D24607A9800CB6965 /* MainViewTabBarController.storyboard */,
 				0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */,
+				0FCF7D7224718E00007DD819 /* AccountViewController.swift */,
 				0F0E7C1D24644CEB0022A2A3 /* MyMessageCell.swift */,
 				0F0E7C1E24644CEB0022A2A3 /* MyMessageCell.xib */,
 				0F0E7C2124644D170022A2A3 /* DestinationMessageCell.swift */,
@@ -133,6 +137,13 @@
 				0FB7E4062461BE3A0085216B /* ChatModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0FCF7D7424718E1B007DD819 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 		2802EA3B727E161C73400A50 /* Frameworks */ = {
@@ -277,6 +288,7 @@
 			files = (
 				0FC32FC5245BACA9006B3CAA /* LoginViewController.swift in Sources */,
 				0F8D4CD524614CBF0024346D /* UserModel.swift in Sources */,
+				0FCF7D7324718E00007DD819 /* AccountViewController.swift in Sources */,
 				0FB7E4022461B9740085216B /* ChatViewController.swift in Sources */,
 				0F0E7C2324644D170022A2A3 /* DestinationMessageCell.swift in Sources */,
 				0F0E7C1F24644CEB0022A2A3 /* MyMessageCell.swift in Sources */,

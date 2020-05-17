@@ -9,11 +9,24 @@
 import UIKit
 import SnapKit
 import Firebase
+import Kingfisher
 
 class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var profileImageUrl: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    /*
+    var labelStatusMessage: UILabel = UILabel()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.addSubview(labelStatusMessage)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+ */
     
 }
 
@@ -32,8 +45,7 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         databaseRef.observe(DataEventType.value) { (snapshot) in
             
             // MARK: - 修正必要
-            // 데이터가쌓임
-            //self.array.removeAll()
+            self.array.removeAll()
             
             let myUid = Auth.auth().currentUser?.uid
             
@@ -60,16 +72,24 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! ProfileCell
+        let url = URL(string: array[indexPath.row].profileImageUrl!)
+        /*
+        let statusMessageLabel = cell.labelStatusMessage
+        statusMessageLabel.snp.makeConstraints { (m) in
+            m.right.equalTo(cell)
+            m.centerY.equalTo(cell)
+        }
+        if let statusMessage = array[indexPath.row].statusMessage{
+            statusMessageLabel.text = statusMessage
+        }
+ */
         
-        URLSession.shared.dataTask(with: URL(string:array[indexPath.row].profileImageUrl!)!) { (data, response, error) in
-            DispatchQueue.main.async {
-                cell.profileImageUrl.image = UIImage(data: data!)
-                cell.profileImageUrl.layer.cornerRadius =  cell.profileImageUrl.frame.size.width/2
-                cell.profileImageUrl.clipsToBounds = true
-            }
-        }.resume()
-        
+        cell.profileImageUrl.layer.cornerRadius =  cell.profileImageUrl.frame.size.width/2
+        cell.profileImageUrl.clipsToBounds = true
+        cell.profileImageUrl.kf.setImage(with: url)
         cell.userName.text = array[indexPath.row].userName
+        
+        
         
         return cell
     }

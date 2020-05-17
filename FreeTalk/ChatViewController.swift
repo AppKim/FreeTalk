@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 extension Int {
     
@@ -89,16 +90,10 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             destinationCell.selectionStyle = .none
             
             let url = URL(string: (self.userModel?.profileImageUrl)!)
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                DispatchQueue.main.async {
-                    
-                    destinationCell.destinationImage.image = UIImage(data: data!)
-                    destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
-                    destinationCell.destinationImage.clipsToBounds = true
-                    
-                }
-            }.resume()
+        
+            destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
+            destinationCell.destinationImage.clipsToBounds = true
+            destinationCell.destinationImage.kf.setImage(with: url)
             
             if let time  = self.comments[indexPath.row].timestamp {
                 destinationCell.timestamp.text = time.toDayTime
