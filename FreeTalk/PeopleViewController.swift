@@ -15,18 +15,19 @@ class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var profileImageUrl: UIImageView!
     @IBOutlet weak var userName: UILabel!
-    /*
-    var labelStatusMessage: UILabel = UILabel()
+    
+    var labelStatusMessage: UILabel! = UILabel()
+    var statusMessageBackground: UIView! = UIView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(labelStatusMessage)
+        
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
- */
     
 }
 
@@ -73,16 +74,33 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! ProfileCell
         let url = URL(string: array[indexPath.row].profileImageUrl!)
-        /*
-        let statusMessageLabel = cell.labelStatusMessage
+        
+        let statusMessageLabel = cell.labelStatusMessage!
+        let statusMessageBackground = cell.statusMessageBackground!
+        
+        cell.addSubview(statusMessageLabel)
+        cell.addSubview(statusMessageBackground)
+        
+        statusMessageBackground.snp.makeConstraints { (m) in
+            m.centerX.equalTo(cell.statusMessageBackground)
+            m.centerY.equalTo(cell.statusMessageBackground)
+            if let count = statusMessageLabel.text?.count{
+                m.width.equalTo(count * 10)
+            }else{
+                m.width.equalTo(0)
+            }
+            m.height.equalTo(30)
+        }
+        cell.statusMessageBackground.backgroundColor = UIColor.gray
+        
         statusMessageLabel.snp.makeConstraints { (m) in
-            m.right.equalTo(cell)
+            m.right.equalTo(cell).offset(-20)
             m.centerY.equalTo(cell)
         }
         if let statusMessage = array[indexPath.row].statusMessage{
             statusMessageLabel.text = statusMessage
         }
- */
+        
         
         cell.profileImageUrl.layer.cornerRadius =  cell.profileImageUrl.frame.size.width/2
         cell.profileImageUrl.clipsToBounds = true
