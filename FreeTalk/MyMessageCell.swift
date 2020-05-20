@@ -12,6 +12,7 @@ class MyMessageCell: UITableViewCell {
 
     @IBOutlet weak var myMessage: UITextView!
     @IBOutlet weak var timestamp: UILabel!
+    @IBOutlet weak var readCount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

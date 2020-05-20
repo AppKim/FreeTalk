@@ -38,7 +38,9 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // チャットする相手のUid
     public var destinationUid: String?
     
-    let databasesRef = Database.database().reference().child("chatrooms")
+    let databasesRef = Database.database().reference()
+    var db : DatabaseReference?
+    var observe : UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +68,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
         self.tabBarController?.tabBar.isHidden = false
+        db?.removeObserver(withHandle: observe!)
     }
     
     
@@ -82,6 +85,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             if let time  = self.comments[indexPath.row].timestamp {
                 myCell.timestamp.text = time.toDayTime
             }
+            setReadCount(label: myCell.readCount, position: indexPath.row)
             return myCell
         }else{
             let destinationCell = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell",for: indexPath) as! DestinationMessageCell
@@ -90,7 +94,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             destinationCell.selectionStyle = .none
             
             let url = URL(string: (self.userModel?.profileImageUrl)!)
-        
+            
             destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
             destinationCell.destinationImage.clipsToBounds = true
             destinationCell.destinationImage.kf.setImage(with: url)
@@ -98,6 +102,8 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             if let time  = self.comments[indexPath.row].timestamp {
                 destinationCell.timestamp.text = time.toDayTime
             }
+            
+            setReadCount(label: destinationCell.readCount, position: indexPath.row)
             
             return destinationCell
         }
@@ -112,7 +118,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             ]
         ]
         
-        databasesRef.childByAutoId().setValue(createRoomInfo) { (error, ref) in
+        databasesRef.child("chatrooms").childByAutoId().setValue(createRoomInfo) { (error, ref) in
             if error == nil {
                 self.checkChatRoom()
             }
@@ -123,21 +129,23 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let chatContent : Dictionary<String,Any> = [
             "uid":uid!,
             "message":message.text!,
-            "timestamp": ServerValue.timestamp()
+            "timestamp": ServerValue.timestamp(),
         ]
         
-        databasesRef.child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
+        databasesRef.child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(chatContent) { (error, ref) in
             if error == nil {
-                let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
-                self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+                
                 self.message.text = ""
+                
+            }else{
+                print(error.debugDescription)
             }
         }
     }
     
     
     func checkChatRoom(){
-        databasesRef.queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: .value,with:  { (datasnapshot) in
+        databasesRef.child("chatrooms").queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: .value,with:  { (datasnapshot) in
             if datasnapshot.value is NSNull{
                 self.createRoom()
             }else {
@@ -167,7 +175,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func getDestinationInfo(){
         
-        Database.database().reference().child("users").child(self.destinationUid!).observeSingleEvent(of:.value,with:{ (datasnapshot) in
+        databasesRef.child("users").child(self.destinationUid!).observeSingleEvent(of:.value,with:{ (datasnapshot) in
             
             self.userModel = UserModel()
             self.userModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
@@ -178,20 +186,58 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func getMessageList(){
         
-        Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments").observe(.value,with:{ (datasnapshot) in
+        db = databasesRef.child("chatrooms").child(self.chatRoomUid!).child("comments")
+        observe = db?.observe(.value,with:{ (datasnapshot) in
             
             self.comments.removeAll()
+            var readUserDic : Dictionary<String,AnyObject> = [:]
             
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
+                let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                let commentMotify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                commentMotify?.readUsers[self.uid!] = true
+                // ????
+                readUserDic[key] = comment?.toJSON() as NSDictionary?
+                // ????
                 self.comments.append(comment!)
             }
-            self.chatTableView.reloadData()
-            let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
-            if self.comments.count > 0 {
-                self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+            
+            let nsDic = readUserDic as NSDictionary
+            /*
+            if self.comments.last?.readUsers.keys.contains(uid){
+                
             }
+            */
+            
+            datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any]) { (err, ref) in
+                self.chatTableView.reloadData()
+                let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+                if self.comments.count > 0 {
+                    self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                }
+            }
+            
         })
+    }
+    
+    func setReadCount(label:UILabel,position: Int?){
+        
+        let readCount = self.comments[position!].readUsers.count
+        databasesRef.child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: .value) { (datasnapshot) in
+            
+            let dic = datasnapshot.value as! [String:Any]
+            
+            let noReadCount = dic.count - readCount
+            
+            if(noReadCount > 0){
+                label.isHidden = false
+                label.text = String(noReadCount)
+            }else{
+                label.isHidden = true
+            }
+        }
+        
     }
     
     func initaializeHideKeyboard(){

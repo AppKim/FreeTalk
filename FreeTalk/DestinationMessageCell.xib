@@ -46,17 +46,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E39-O4-aH5">
+                        <rect key="frame" x="284" y="145" width="4" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Imh-O1-YGs" firstAttribute="leading" secondItem="Wb9-wl-wbf" secondAttribute="leading" constant="20" id="0QI-Sy-MAU"/>
                     <constraint firstAttribute="bottom" secondItem="Wb9-wl-wbf" secondAttribute="bottom" constant="10" id="8N6-no-f5k"/>
                     <constraint firstItem="Ptu-GJ-xXp" firstAttribute="bottom" secondItem="Wb9-wl-wbf" secondAttribute="bottom" id="99c-gU-SMK"/>
+                    <constraint firstItem="E39-O4-aH5" firstAttribute="leading" secondItem="Ptu-GJ-xXp" secondAttribute="trailing" constant="5" id="B7V-pT-Pi8"/>
                     <constraint firstItem="Imh-O1-YGs" firstAttribute="bottom" secondItem="Wb9-wl-wbf" secondAttribute="bottom" constant="-5" id="PdN-20-Sqz"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ptu-GJ-xXp" secondAttribute="trailing" constant="40" id="S3y-q1-28U"/>
                     <constraint firstItem="Wb9-wl-wbf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="Shp-pR-jST"/>
+                    <constraint firstItem="E39-O4-aH5" firstAttribute="bottom" secondItem="Ptu-GJ-xXp" secondAttribute="bottom" id="Urr-us-J54"/>
                     <constraint firstItem="Imh-O1-YGs" firstAttribute="top" secondItem="Wb9-wl-wbf" secondAttribute="top" constant="5" id="box-5g-8Rw"/>
                     <constraint firstItem="Imh-O1-YGs" firstAttribute="trailing" secondItem="Wb9-wl-wbf" secondAttribute="trailing" constant="-5" id="ely-7Z-jO1"/>
                     <constraint firstItem="OAO-KM-2Tq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="i2n-qI-a62"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E39-O4-aH5" secondAttribute="trailing" constant="40" id="kkQ-V4-pQA"/>
                     <constraint firstItem="OAO-KM-2Tq" firstAttribute="centerY" secondItem="Wb9-wl-wbf" secondAttribute="top" id="mkp-2N-N45"/>
                     <constraint firstItem="qLd-jz-EFe" firstAttribute="leading" secondItem="OAO-KM-2Tq" secondAttribute="trailing" constant="5" id="sEk-Bs-BvH"/>
                     <constraint firstItem="Ptu-GJ-xXp" firstAttribute="leading" secondItem="Wb9-wl-wbf" secondAttribute="trailing" constant="5" id="tgV-M1-p3r"/>
@@ -69,6 +77,7 @@
                 <outlet property="destinationImage" destination="OAO-KM-2Tq" id="FnD-Xf-aXi"/>
                 <outlet property="destinationMessage" destination="Imh-O1-YGs" id="5OF-p3-rRH"/>
                 <outlet property="destinationName" destination="qLd-jz-EFe" id="9cQ-vY-S6a"/>
+                <outlet property="readCount" destination="E39-O4-aH5" id="KQh-QE-bSt"/>
                 <outlet property="timestamp" destination="Ptu-GJ-xXp" id="86k-M1-V2J"/>
             </connections>
             <point key="canvasLocation" x="159.42028985507247" y="128.90625"/>

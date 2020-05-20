@@ -14,6 +14,7 @@ class DestinationMessageCell: UITableViewCell {
     @IBOutlet weak var destinationImage: UIImageView!
     @IBOutlet weak var destinationName: UILabel!
     @IBOutlet weak var timestamp: UILabel!
+    @IBOutlet weak var readCount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
