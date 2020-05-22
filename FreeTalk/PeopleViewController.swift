@@ -11,6 +11,7 @@ import SnapKit
 import Firebase
 import Kingfisher
 
+// set UITableViewCell
 class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var profileImageUrl: UIImageView!
@@ -21,7 +22,6 @@ class ProfileCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         
     }
     
@@ -78,12 +78,21 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         let statusMessageLabel = cell.labelStatusMessage!
         let statusMessageBackground = cell.statusMessageBackground!
         
-        cell.addSubview(statusMessageLabel)
+        
         cell.addSubview(statusMessageBackground)
+        cell.addSubview(statusMessageLabel)
+        
+        statusMessageLabel.snp.makeConstraints { (m) in
+            m.right.equalTo(cell).offset(-10)
+            m.centerY.equalTo(cell)
+        }
+        if let statusMessage = array[indexPath.row].statusMessage{
+            statusMessageLabel.text = statusMessage
+        }
         
         statusMessageBackground.snp.makeConstraints { (m) in
-            m.centerX.equalTo(cell.statusMessageBackground)
-            m.centerY.equalTo(cell.statusMessageBackground)
+            m.right.equalTo(cell).offset(10)
+            m.centerY.equalTo(cell)
             if let count = statusMessageLabel.text?.count{
                 m.width.equalTo(count * 10)
             }else{
@@ -91,15 +100,8 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
             }
             m.height.equalTo(30)
         }
-        cell.statusMessageBackground.backgroundColor = UIColor.gray
+        statusMessageBackground.backgroundColor = UIColor.gray
         
-        statusMessageLabel.snp.makeConstraints { (m) in
-            m.right.equalTo(cell).offset(-20)
-            m.centerY.equalTo(cell)
-        }
-        if let statusMessage = array[indexPath.row].statusMessage{
-            statusMessageLabel.text = statusMessage
-        }
         
         
         cell.profileImageUrl.layer.cornerRadius =  cell.profileImageUrl.frame.size.width/2

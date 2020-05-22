@@ -44,9 +44,11 @@ class LoginViewController: UIViewController {
         signinButton.backgroundColor = UIColor(hex: color)
         signupButton.backgroundColor = UIColor(hex: color)
         
+        // action attache
         signupButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
         signinButton.addTarget(self, action: #selector(loginEvent), for: .touchUpInside)
         
+        //　listen for authentication status
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 let s = UIStoryboard(name: "MainViewTabBarController", bundle: nil)
@@ -56,6 +58,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // signup
     @objc func presentSignup(){
         
         let s = UIStoryboard(name: "SignUpViewController", bundle: nil)
@@ -64,6 +67,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    //　login
     @objc func loginEvent(){
         
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
@@ -82,7 +86,9 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // login alert
     func showAlert(_ message: String) {
+        
     let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
     alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
     self.present(alertController, animated: true, completion: nil)

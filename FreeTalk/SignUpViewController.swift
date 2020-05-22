@@ -38,14 +38,20 @@ class SignUpViewController: UIViewController,UINavigationControllerDelegate,UIIm
         submitButton.backgroundColor = UIColor(hex: color)
         cancelButton.backgroundColor = UIColor(hex: color)
         
+        // action attache
         submitButton.addTarget(self, action: #selector(submitEvent), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelEvent), for: .touchUpInside)
         
+        // detect tap
         imageView.isUserInteractionEnabled = true
+        
+        // instance create
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imagePicker)))
         
     }
     
+    
+    // show image library
     @objc func imagePicker(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -56,6 +62,8 @@ class SignUpViewController: UIViewController,UINavigationControllerDelegate,UIIm
         
     }
     
+
+    // select image from library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         imageView.image = info[.originalImage] as? UIImage
@@ -63,6 +71,7 @@ class SignUpViewController: UIViewController,UINavigationControllerDelegate,UIIm
         self.dismiss(animated: true, completion: nil)
     }
     
+    // confirm
     @objc func submitEvent(){
         
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (user, error) in
@@ -123,6 +132,7 @@ class SignUpViewController: UIViewController,UINavigationControllerDelegate,UIIm
         }
         
     }
+    
     
     @objc func cancelEvent(){
         

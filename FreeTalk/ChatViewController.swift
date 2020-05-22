@@ -41,6 +41,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let databasesRef = Database.database().reference()
     var db : DatabaseReference?
     var observe : UInt?
+    var peopleCount :Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,46 +190,64 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         db = databasesRef.child("chatrooms").child(self.chatRoomUid!).child("comments")
         observe = db?.observe(.value,with:{ (datasnapshot) in
             
-            self.comments.removeAll()
-            var readUserDic : Dictionary<String,AnyObject> = [:]
-            
-            for item in datasnapshot.children.allObjects as! [DataSnapshot] {
-                let key = item.key as String
-                let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                let commentMotify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                commentMotify?.readUsers[self.uid!] = true
-                // ????
-                readUserDic[key] = comment?.toJSON() as NSDictionary?
-                // ????
-                self.comments.append(comment!)
-            }
-            
-            let nsDic = readUserDic as NSDictionary
-            /*
-            if self.comments.last?.readUsers.keys.contains(uid){
+            if datasnapshot.hasChildren(){
+                self.comments.removeAll()
+                var readUserDic : Dictionary<String,AnyObject> = [:]
                 
-            }
-            */
-            
-            datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any]) { (err, ref) in
-                self.chatTableView.reloadData()
-                let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
-                if self.comments.count > 0 {
-                    self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                for item in datasnapshot.children.allObjects as! [DataSnapshot] {
+                    let key = item.key as String
+                    let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                    let commentMotify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                    commentMotify?.readUsers[self.uid!] = true
+                    // ????
+                    readUserDic[key] = commentMotify?.toJSON() as NSDictionary?
+                    // ????
+                    self.comments.append(comment!)
+                }
+                
+                let nsDic = readUserDic as NSDictionary
+                
+                if (!(self.comments.last?.readUsers.keys.contains(self.uid!))!){
+                    
+                    datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any]) { (err, ref) in
+                        self.chatTableView.reloadData()
+                        let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+                        if self.comments.count > 0 {
+                            self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                        }
+                    }
+                }else{
+                    self.chatTableView.reloadData()
+                    let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+                    if self.comments.count > 0 {
+                        self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                    }
                 }
             }
-            
         })
     }
     
     func setReadCount(label:UILabel,position: Int?){
         
         let readCount = self.comments[position!].readUsers.count
-        databasesRef.child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: .value) { (datasnapshot) in
+        
+        if peopleCount == nil {
             
-            let dic = datasnapshot.value as! [String:Any]
-            
-            let noReadCount = dic.count - readCount
+            databasesRef.child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: .value) { (datasnapshot) in
+                
+                let dic = datasnapshot.value as! [String:Any]
+                self.peopleCount = dic.count
+                let noReadCount = self.peopleCount! - readCount
+                
+                if(noReadCount > 0){
+                    label.isHidden = false
+                    label.text = String(noReadCount)
+                }else{
+                    label.isHidden = true
+                }
+            }
+        }else{
+            let noReadCount = peopleCount! - readCount
             
             if(noReadCount > 0){
                 label.isHidden = false
@@ -236,6 +255,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }else{
                 label.isHidden = true
             }
+            
         }
         
     }

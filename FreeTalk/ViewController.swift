@@ -18,11 +18,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // load remoteconfig
         remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
         settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
         
+        // remoteconfig fetch
         remoteConfig.fetch(withExpirationDuration: TimeInterval(0)) { (status, error) -> Void in
           if status == .success {
             print("Config fetched!")
@@ -33,9 +35,11 @@ class ViewController: UIViewController {
             print("Config not fetched")
             print("Error: \(error?.localizedDescription ?? "No error available.")")
           }
+        // main view load
           self.displayWelcome()
         }
-
+        
+        // app mainicon add
         self.view.addSubview(box)
         box.snp.makeConstraints { (make) in
             make.center.equalTo(self.view)
