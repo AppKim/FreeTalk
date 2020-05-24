@@ -45,7 +45,7 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         databaseRef.observe(DataEventType.value) { (snapshot) in
             
-            // MARK: - 修正必要
+            
             self.array.removeAll()
             
             let myUid = Auth.auth().currentUser?.uid
@@ -64,6 +64,21 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
                 self.profileTable.reloadData();
             }
         }
+        
+        // MARK: - 修正必要
+        let selectFriendButton = UIButton()
+        view.addSubview(selectFriendButton)
+        selectFriendButton.snp.makeConstraints { (m) in
+            m.bottom.equalTo(view).offset(-100)
+            m.right.equalTo(view).offset(-20)
+        }
+        selectFriendButton.backgroundColor = UIColor.black
+        selectFriendButton.addTarget(self, action: #selector(showSelectFriend), for: .touchUpInside)
+    }
+    
+    @objc func showSelectFriend(){
+        print("A")
+        self.performSegue(withIdentifier: "SelectFriendSegue", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

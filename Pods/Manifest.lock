@@ -1,4 +1,5 @@
 PODS:
+  - BEMCheckBox (1.4.1)
   - Firebase/Analytics (6.23.0):
     - Firebase/Core
   - Firebase/Auth (6.23.0):
@@ -123,6 +124,7 @@ PODS:
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
+  - BEMCheckBox
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
@@ -135,6 +137,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - BEMCheckBox
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -164,6 +167,7 @@ SPEC REPOS:
     - TextFieldEffects
 
 SPEC CHECKSUMS:
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
   FirebaseABTesting: 821a3a3e4a145987e80fee3657c4de1cb9adf693
   FirebaseAnalytics: 558f7a03d19de451093032c806f39d5f9dff096e
@@ -192,6 +196,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 69fb617921ad96572f6b6f58cc956c436f95917e
+PODFILE CHECKSUM: 81aa070236d7fcf9f0c5abcc94f7f956aecbce34
 
 COCOAPODS: 1.9.1
