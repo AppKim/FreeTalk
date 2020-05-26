@@ -69,11 +69,14 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         let selectFriendButton = UIButton()
         view.addSubview(selectFriendButton)
         selectFriendButton.snp.makeConstraints { (m) in
-            m.bottom.equalTo(view).offset(-100)
+            m.bottom.equalTo(view).offset(-90)
             m.right.equalTo(view).offset(-20)
+            m.width.height.equalTo(50)
         }
         selectFriendButton.backgroundColor = UIColor.black
         selectFriendButton.addTarget(self, action: #selector(showSelectFriend), for: .touchUpInside)
+        selectFriendButton.layer.cornerRadius = selectFriendButton.frame.size.width/2
+        selectFriendButton.layer.masksToBounds = true
     }
     
     @objc func showSelectFriend(){

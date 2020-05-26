@@ -16,8 +16,10 @@ class SelectFriendCell: UITableViewCell {
     @IBOutlet weak var checkbox: BEMCheckBox!
 }
 
-class SelectFriendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class SelectFriendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,BEMCheckBoxDelegate{
+    @IBOutlet weak var createButton: UIButton!
     
+    var users = Dictionary<String,Bool>()
     var array : [UserModel] = []
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,6 +33,9 @@ class SelectFriendViewController: UIViewController,UITableViewDelegate,UITableVi
         
         view.labelName.text = array[indexPath.row].userName
         view.imageviewProfile.kf.setImage(with: URL(string: array[indexPath.row].profileImageUrl!))
+        
+        view.checkbox.delegate = self
+        view.checkbox.tag = indexPath.row
         
         return view
     }
@@ -62,6 +67,30 @@ class SelectFriendViewController: UIViewController,UITableViewDelegate,UITableVi
                 self.tableView.reloadData();
             }
         }
+        
+        createButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+    }
+    
+    @objc func didTap(_ checkBox: BEMCheckBox) {
+        if(checkBox.on){
+            
+            users[self.array[checkBox.tag].uid!] = true
+            
+        }else{
+            
+            users.removeValue(forKey: self.array[checkBox.tag].uid!)
+        }
+    }
+    
+    @objc func createRoom(){
+        
+        let myUid = Auth.auth().currentUser?.uid
+        users[myUid!] = true
+        let nsDic = users as NSDictionary
+        
+        let databaseRef = Database.database().reference()
+        databaseRef.child("chatrooms").childByAutoId().child("users").setValue(nsDic)
+        
     }
     
     

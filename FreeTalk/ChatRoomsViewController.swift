@@ -74,12 +74,29 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let destinationUid = destinationUsers[indexPath.row]
-        let s = UIStoryboard(name: "ChatViewController", bundle: nil)
-        let chatVC = s.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        chatVC.destinationUid = destinationUid
-        self.navigationController?.pushViewController(chatVC, animated: true)
         
+        // MARK: - 修正必要
+        if self.destinationUsers[indexPath.row].count > 2 {
+            
+            let s = UIStoryboard(name: "GroupChatRoomViewController", bundle: nil)
+            let chatVC = s.instantiateViewController(withIdentifier: "GroupChatRoomViewController") as! GroupChatRoomViewController
+            self.navigationController?.pushViewController(chatVC, animated: true)
+            // MARK: - 修正必要
+            print(self.destinationUsers[indexPath.row].count)
+
+            
+        }else{
+            
+            let destinationUid = destinationUsers[indexPath.row]
+            let s = UIStoryboard(name: "ChatViewController", bundle: nil)
+            let chatVC = s.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            chatVC.destinationUid = destinationUid
+            self.navigationController?.pushViewController(chatVC, animated: true)
+            // MARK: - 修正必要
+            print(self.destinationUsers[indexPath.row].count)
+
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,6 +124,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
             chatRoomCell.destinationImage.kf.setImage(with: url)
 
         }
+        
         let lastMessageKey = self.chatRooms[indexPath.row].comments.keys.sorted(){$0>$1}
         
         if chatRooms[indexPath.row].comments.count > 0 {
