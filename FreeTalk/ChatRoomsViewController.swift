@@ -49,6 +49,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         databaseRef.child("chatrooms").queryOrdered(byChild: "users"+uid).observeSingleEvent(of: .value) { (datasnapshot) in
             self.chatRooms.removeAll()
+            self.destinationUsers.removeAll()
             for item in datasnapshot.children.allObjects as! [DataSnapshot]{
                 
                 if let chatroomdic = item.value as? [String:AnyObject]{
@@ -76,24 +77,19 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         
         // MARK: - 修正必要
-        if self.destinationUsers[indexPath.row].count > 2 {
-            
+        if self.destinationUsers.count > 2 {
+            print(self.destinationUsers.count)
             let s = UIStoryboard(name: "GroupChatRoomViewController", bundle: nil)
             let chatVC = s.instantiateViewController(withIdentifier: "GroupChatRoomViewController") as! GroupChatRoomViewController
             self.navigationController?.pushViewController(chatVC, animated: true)
-            // MARK: - 修正必要
-            print(self.destinationUsers[indexPath.row].count)
 
             
         }else{
-            
             let destinationUid = destinationUsers[indexPath.row]
             let s = UIStoryboard(name: "ChatViewController", bundle: nil)
             let chatVC = s.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
             chatVC.destinationUid = destinationUid
             self.navigationController?.pushViewController(chatVC, animated: true)
-            // MARK: - 修正必要
-            print(self.destinationUsers[indexPath.row].count)
 
             
         }
@@ -103,7 +99,6 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
         let chatRoomCell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
         
         var destinationUid :String?
-        
         for item in chatRooms[indexPath.row].users {
             if(item.key != self.uid){
                 destinationUid = item.key

@@ -16,7 +16,6 @@ class GroupChatRoomViewController: UIViewController {
 
         Database.database().reference().child("users").observeSingleEvent(of: .value) { (datasnapshot) in
             let dic = datasnapshot.value as! [String:AnyObject]
-            print(dic.count)
         }
     }
     

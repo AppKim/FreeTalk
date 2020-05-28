@@ -156,7 +156,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                         
                         let chatModel = ChatModel(JSON: chatRoomdic)
                         
-                        if chatModel?.users[self.destinationUid!] == true {
+                        if chatModel?.users[self.destinationUid!] == true && chatModel?.users.count == 2{
                             
                             self.chatRoomUid  = item.key
                             self.getDestinationInfo()
