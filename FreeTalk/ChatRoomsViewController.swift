@@ -23,6 +23,8 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
     var uid : String!
     var chatRooms :[ChatModel] = []
     var destinationUsers: [String] = []
+
+    var keys: [String] = []
     
     let databaseRef = Database.database().reference()
     
@@ -54,6 +56,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
                 
                 if let chatroomdic = item.value as? [String:AnyObject]{
                     let chatModel = ChatModel(JSON: chatroomdic)
+                    self.keys.append(item.key)
                     self.chatRooms.append(chatModel!)
                     
                 }
@@ -76,11 +79,10 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // MARK: - 修正必要
-        if self.destinationUsers.count > 2 {
-            print(self.destinationUsers.count)
+        if self.chatRooms[indexPath.row].users.count > 2 {
             let s = UIStoryboard(name: "GroupChatRoomViewController", bundle: nil)
             let chatVC = s.instantiateViewController(withIdentifier: "GroupChatRoomViewController") as! GroupChatRoomViewController
+            chatVC.destinationRoom = self.keys[indexPath.row]
             self.navigationController?.pushViewController(chatVC, animated: true)
 
             
@@ -105,6 +107,7 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
                 self.destinationUsers.append(destinationUid!)
             }
         }
+        
         
         databaseRef.child("users").child(destinationUid!).observeSingleEvent(of: .value) { (datasnapshot) in
             
