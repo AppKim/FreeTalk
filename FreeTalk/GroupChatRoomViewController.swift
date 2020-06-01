@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import Kingfisher
+
 
 class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
@@ -18,7 +20,8 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
     var destinationRoom: String?
     var uid: String?
     var comments : [ChatModel.Comment] = []
-    var destinationUsers : [String] = []
+    var users : [String:AnyObject]?
+
     let databaseRef = Database.database().reference()
     
     override func viewDidLoad() {
@@ -26,16 +29,17 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
         
         uid = Auth.auth().currentUser?.uid
         
+        chatTableView.separatorStyle = .none
 
         databaseRef.child("users").observeSingleEvent(of: .value) { (datasnapshot) in
-            let dic = datasnapshot.value as! [String:AnyObject]
+            self.users = datasnapshot.value as! [String:AnyObject]
+            
         }
         
         chatTableView.register(UINib(nibName: "MyMessageCell", bundle: nil), forCellReuseIdentifier: "MyMessageCell")
         chatTableView.register(UINib(nibName: "DestinationMessageCell", bundle: nil), forCellReuseIdentifier: "DestinationMessageCell")
         
         getMessageList()
-        destinationInfo()
         
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
@@ -68,18 +72,18 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
                 
                 for item in datasnapshot.children.allObjects as! [DataSnapshot] {
                     
-                    print(item)
+                    /*print(item)
                     print(item.value)
                     print(item.key)
-                    
+                    */
                     
                     let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                    print(comment?.uid as! String)
+                    //print(comment?.uid as! String)
                     self.comments.append(comment!)
                     self.chatTableView.reloadData()
                     
                 }
-                print("===========")
+                //print("===========")
                 
             }
         }
@@ -87,18 +91,6 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
         
     }
     
-    func destinationInfo(){
-        
-        databaseRef.child("chatrooms").child(destinationRoom!).child("users").observeSingleEvent(of: .value) { (datasnapshot) in
-            
-            for item in datasnapshot.value as! [String:Any]{
-                print(item.key)
-                self.destinationUsers.append(item.key)
-            }
-            
-        }
-        
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         comments.count
@@ -109,14 +101,33 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
             
             let myCell = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
             myCell.myMessage.text = comments[indexPath.row].message
+            if let time = self.comments[indexPath.row].timestamp {
+                myCell.timestamp.text = time.toDayTime
+            }
             
             return myCell
             
         }else{
             
+            let destinationUsers = users![comments[indexPath.row].uid!]
+            
             let destinationCell = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
             
+            destinationCell.destinationName.text = destinationUsers!["userName"] as! String
             destinationCell.destinationMessage.text = comments[indexPath.row].message
+            
+            
+            let imageUrl = destinationUsers!["profileImageUrl"] as! String
+            
+            let url = URL(string: (imageUrl))
+            
+            destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
+            destinationCell.destinationImage.clipsToBounds = true
+            destinationCell.destinationImage.kf.setImage(with: url)
+            
+            if let time  = self.comments[indexPath.row].timestamp {
+                destinationCell.timestamp.text = time.toDayTime
+            }
             
             return destinationCell
         }
