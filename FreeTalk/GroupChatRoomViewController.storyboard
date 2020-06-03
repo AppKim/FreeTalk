@@ -68,6 +68,7 @@
                     </view>
                     <connections>
                         <outlet property="chatTableView" destination="YAG-Fm-Gak" id="myW-5E-vVm"/>
+                        <outlet property="inputMessageView" destination="oiQ-oQ-t4W" id="Efr-74-Gjd"/>
                         <outlet property="sendButton" destination="cR7-3b-4vs" id="ctd-ie-qhE"/>
                         <outlet property="textFieldMessage" destination="qo4-nV-uSY" id="RwF-ml-aHO"/>
                     </connections>

@@ -17,6 +17,7 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var textFieldMessage: UITextView!
     
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var inputMessageView: NSLayoutConstraint!
     var destinationRoom: String?
     var uid: String?
     var comments : [ChatModel.Comment] = []
@@ -40,6 +41,10 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
         chatTableView.register(UINib(nibName: "DestinationMessageCell", bundle: nil), forCellReuseIdentifier: "DestinationMessageCell")
         
         getMessageList()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
@@ -130,6 +135,41 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
             }
             
             return destinationCell
+        }
+    }
+    
+    func initaializeHideKeyboard(){
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification:Notification){
+        
+        let notiInfo = notification.userInfo!
+        let keyboardSize = notiInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let height = keyboardSize.height - self.view.safeAreaInsets.bottom
+        
+        let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.inputMessageView.constant = -height
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(notification:Notification){
+        
+        let notiInfo = notification.userInfo!
+        let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        
+        UIView.animate(withDuration: animationDuration) {
+            self.inputMessageView.constant = 0
+            self.view.layoutIfNeeded()
         }
     }
     
