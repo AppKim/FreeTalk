@@ -87,6 +87,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 myCell.timestamp.text = time.toDayTime
             }
             setReadCount(label: myCell.readCount, position: indexPath.row)
+            
             return myCell
         }else{
             let destinationCell = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell",for: indexPath) as! DestinationMessageCell
@@ -95,7 +96,6 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             destinationCell.selectionStyle = .none
             
             let url = URL(string: (self.userModel?.profileImageUrl)!)
-            
             destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
             destinationCell.destinationImage.clipsToBounds = true
             destinationCell.destinationImage.kf.setImage(with: url)
@@ -109,7 +109,6 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             return destinationCell
         }
     }
-    
     
     @objc func createRoom(){
         let createRoomInfo : Dictionary<String,Any> = [

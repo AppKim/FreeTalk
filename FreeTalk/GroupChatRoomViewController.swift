@@ -74,22 +74,41 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
             if datasnapshot.hasChildren(){
                 
                 self.comments.removeAll()
+                var readUserDic: Dictionary<String,AnyObject> = [:]
                 
                 for item in datasnapshot.children.allObjects as! [DataSnapshot] {
                     
-                    /*print(item)
-                    print(item.value)
-                    print(item.key)
-                    */
+                    let key = item.key
                     
                     let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                    let commentModify = ChatModel.Comment(JSON: item.value  as! [String:AnyObject])
+                    commentModify?.readUsers[self.uid!] = true
+                    readUserDic[key] = commentModify?.toJSON() as NSDictionary?
+                    
                     //print(comment?.uid as! String)
                     self.comments.append(comment!)
                     self.chatTableView.reloadData()
                     
                 }
-                //print("===========")
                 
+                let nsDic = readUserDic as! NSDictionary
+                // MARK: - 修正中
+                if (!(self.comments.last?.readUsers.keys.contains(self.uid!))!){
+                    
+                    datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any]) { (err, ref) in
+                        self.chatTableView.reloadData()
+                        let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+                        if self.comments.count > 0 {
+                            self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                        }
+                    }
+                }else{
+                    self.chatTableView.reloadData()
+                    let lastIndexPath = IndexPath(row: self.comments.count-1, section: 0)
+                    if self.comments.count > 0 {
+                        self.chatTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: false)
+                    }
+                }
             }
         }
 
@@ -106,6 +125,7 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
             
             let myCell = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
             myCell.myMessage.text = comments[indexPath.row].message
+            myCell.selectionStyle = .none
             if let time = self.comments[indexPath.row].timestamp {
                 myCell.timestamp.text = time.toDayTime
             }
@@ -120,7 +140,7 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
             
             destinationCell.destinationName.text = destinationUsers!["userName"] as! String
             destinationCell.destinationMessage.text = comments[indexPath.row].message
-            
+            destinationCell.selectionStyle = .none
             
             let imageUrl = destinationUsers!["profileImageUrl"] as! String
             
