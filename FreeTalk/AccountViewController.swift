@@ -12,11 +12,13 @@ import Firebase
 class AccountViewController: UIViewController {
 
     @IBOutlet weak var statusMessge: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         statusMessge.addTarget(self, action: #selector(setStatusMessage), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
 
         // Do any additional setup after loading the view.
     }
@@ -42,6 +44,24 @@ class AccountViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
         
     }
+    
+    @objc func logout(){
+
+        do {
+            // MARK: - 再度確認必要
+            try Auth.auth().signOut()
+            
+            let s = UIStoryboard(name: "LoginViewController", bundle: nil)
+            let loginVC = s.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.present(loginVC, animated: true, completion: nil)
+
+        } catch  {
+            print("error")
+        }
+        
+    }
+    
+    
     
     
     /*

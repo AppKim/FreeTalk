@@ -20,6 +20,7 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var inputMessageView: NSLayoutConstraint!
     var destinationRoom: String?
     var uid: String?
+    var peopleCount: Int?
     var comments : [ChatModel.Comment] = []
     var users : [String:AnyObject]?
 
@@ -47,6 +48,51 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
 
         
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if comments[indexPath.row].uid == uid {
+            
+            let myCell = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
+            myCell.myMessage.text = comments[indexPath.row].message
+            myCell.selectionStyle = .none
+            if let time = self.comments[indexPath.row].timestamp {
+                myCell.timestamp.text = time.toDayTime
+            }
+            setReadCount(readCountLabel:myCell.readCount,position:indexPath.row)
+            
+            return myCell
+            
+        }else{
+            
+            let destinationUsers = users![comments[indexPath.row].uid!]
+            
+            let destinationCell = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
+            
+            destinationCell.destinationName.text = destinationUsers!["userName"] as! String
+            destinationCell.destinationMessage.text = comments[indexPath.row].message
+            destinationCell.selectionStyle = .none
+            
+            let imageUrl = destinationUsers!["profileImageUrl"] as! String
+            
+            let url = URL(string: (imageUrl))
+            
+            destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
+            destinationCell.destinationImage.clipsToBounds = true
+            destinationCell.destinationImage.kf.setImage(with: url)
+            
+            if let time  = self.comments[indexPath.row].timestamp {
+                destinationCell.timestamp.text = time.toDayTime
+            }
+            
+            setReadCount(readCountLabel:destinationCell.readCount,position:indexPath.row)
+            
+            return destinationCell
+        }
     }
     
     @objc func sendMessage(){
@@ -92,7 +138,6 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
                 }
                 
                 let nsDic = readUserDic as! NSDictionary
-                // MARK: - 修正中
                 if (!(self.comments.last?.readUsers.keys.contains(self.uid!))!){
                     
                     datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any]) { (err, ref) in
@@ -114,48 +159,45 @@ class GroupChatRoomViewController: UIViewController,UITableViewDelegate,UITableV
 
         
     }
+
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        comments.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if comments[indexPath.row].uid == uid {
+    func setReadCount(readCountLabel:UILabel,position:Int){
+        
+        let readUsers = self.comments[position].readUsers.count
+        
+        if peopleCount == nil {
             
-            let myCell = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
-            myCell.myMessage.text = comments[indexPath.row].message
-            myCell.selectionStyle = .none
-            if let time = self.comments[indexPath.row].timestamp {
-                myCell.timestamp.text = time.toDayTime
+            databaseRef.child("chatrooms").child(destinationRoom!).child("users").observeSingleEvent(of: .value) { (datasnapshot) in
+                
+                let item = datasnapshot.value as! [String:AnyObject]
+                self.peopleCount = item.count
+                let noReadCount = self.peopleCount!-readUsers
+                
+                if noReadCount > 0 {
+                    readCountLabel.isHidden = false
+                    readCountLabel.text = String(noReadCount)
+                }else{
+                    readCountLabel.isHidden = true
+                }
             }
-            
-            return myCell
             
         }else{
             
-            let destinationUsers = users![comments[indexPath.row].uid!]
-            
-            let destinationCell = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
-            
-            destinationCell.destinationName.text = destinationUsers!["userName"] as! String
-            destinationCell.destinationMessage.text = comments[indexPath.row].message
-            destinationCell.selectionStyle = .none
-            
-            let imageUrl = destinationUsers!["profileImageUrl"] as! String
-            
-            let url = URL(string: (imageUrl))
-            
-            destinationCell.destinationImage.layer.cornerRadius = destinationCell.destinationImage.frame.size.height / 2
-            destinationCell.destinationImage.clipsToBounds = true
-            destinationCell.destinationImage.kf.setImage(with: url)
-            
-            if let time  = self.comments[indexPath.row].timestamp {
-                destinationCell.timestamp.text = time.toDayTime
+            guard let test = peopleCount else{
+                return
             }
             
-            return destinationCell
+            let noReadCount = test - readUsers
+            
+            if noReadCount > 0 {
+                readCountLabel.isHidden = false
+                readCountLabel.text = String(noReadCount)
+            }else{
+                readCountLabel.isHidden = true
+            }
+            
         }
+        
     }
     
     func initaializeHideKeyboard(){

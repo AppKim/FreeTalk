@@ -297,6 +297,11 @@
                                 <rect key="frame" x="130.5" y="124" width="153" height="30"/>
                                 <state key="normal" title="ステータスメッセージ"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Nv-G1P">
+                                <rect key="frame" x="183" y="171" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -307,6 +312,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="baseline_account_circle_black_24pt" id="jeU-0d-4Ng"/>
                     <connections>
+                        <outlet property="logoutButton" destination="ZmY-Nv-G1P" id="Reu-mT-PbG"/>
                         <outlet property="statusMessge" destination="9SE-M0-7TI" id="I9l-4W-f1U"/>
                     </connections>
                 </viewController>
