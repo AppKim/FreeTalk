@@ -137,6 +137,8 @@ class ChatRoomsViewController: UIViewController,UITableViewDelegate,UITableViewD
         return chatRoomCell
     }
     
+    // MARK: - Navigation キーボード実装
+    
     /*
      // MARK: - Navigation
      

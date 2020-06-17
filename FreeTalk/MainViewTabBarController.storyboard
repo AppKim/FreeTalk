@@ -71,9 +71,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zFb-43-A7A"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UWy-x0-rtk"/>
+                    <navigationItem key="navigationItem" id="UWy-x0-rtk">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nfk-CP-CfX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PIs-EZ-90k">
+                                <rect key="frame" x="266" y="0.0" width="25" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="baseline_maps_ugc_black_24pt"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileTable" destination="j7m-57-kVM" id="Oye-FR-Buy"/>
+                        <outlet property="selectFriendButton" destination="PIs-EZ-90k" id="xGg-QA-kxI"/>
                         <segue destination="LMQ-jE-R7E" kind="show" identifier="SelectFriendSegue" id="vqb-Gw-6SE"/>
                     </connections>
                 </viewController>
@@ -362,6 +372,7 @@
     <resources>
         <image name="baseline_account_circle_black_24pt" width="24" height="24"/>
         <image name="baseline_chat_black_24pt" width="24" height="24"/>
+        <image name="baseline_maps_ugc_black_24pt" width="24" height="24"/>
         <image name="baseline_people_black_24pt" width="24" height="24"/>
     </resources>
 </document>

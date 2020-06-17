@@ -35,6 +35,7 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     var array : [UserModel] = []
     @IBOutlet weak var profileTable: UITableView!
+    @IBOutlet weak var selectFriendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,7 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         
         // MARK: - 修正必要
+        /*
         let selectFriendButton = UIButton()
         view.addSubview(selectFriendButton)
         selectFriendButton.snp.makeConstraints { (m) in
@@ -73,14 +75,14 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
             m.right.equalTo(view).offset(-20)
             m.width.height.equalTo(50)
         }
-        selectFriendButton.backgroundColor = UIColor.black
+        selectFriendButton.backgroundColor = UIColor.black*/
         selectFriendButton.addTarget(self, action: #selector(showSelectFriend), for: .touchUpInside)
-        selectFriendButton.layer.cornerRadius = selectFriendButton.frame.size.width/2
-        selectFriendButton.layer.masksToBounds = true
+        
+        /*selectFriendButton.layer.cornerRadius = selectFriendButton.frame.size.width/2
+        selectFriendButton.layer.masksToBounds = true*/
     }
     
     @objc func showSelectFriend(){
-        print("A")
         self.performSegue(withIdentifier: "SelectFriendSegue", sender: nil)
     }
     
