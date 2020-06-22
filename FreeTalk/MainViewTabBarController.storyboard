@@ -74,8 +74,8 @@
                     <navigationItem key="navigationItem" id="UWy-x0-rtk">
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nfk-CP-CfX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PIs-EZ-90k">
-                                <rect key="frame" x="266" y="0.0" width="25" height="50"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PIs-EZ-90k">
+                                <rect key="frame" x="369" y="0.0" width="25" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="baseline_maps_ugc_black_24pt"/>
                             </button>
@@ -303,26 +303,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SE-M0-7TI">
-                                <rect key="frame" x="130.5" y="124" width="153" height="30"/>
-                                <state key="normal" title="ステータスメッセージ"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Nv-G1P">
-                                <rect key="frame" x="183" y="171" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Nv-G1P">
+                                <rect key="frame" x="183" y="545" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OCn-GR-7Mt">
+                                <rect key="frame" x="107" y="144" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="0fN-AN-uF0"/>
+                                    <constraint firstAttribute="width" constant="200" id="QoW-ao-znZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCa-CZ-2Zr">
+                                <rect key="frame" x="166.5" y="394" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKZ-DM-Sjf">
+                                <rect key="frame" x="87" y="381" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SE-M0-7TI">
+                                <rect key="frame" x="130.5" y="465" width="153" height="30"/>
+                                <state key="normal" title="ステータスメッセージ"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="9SE-M0-7TI" firstAttribute="centerX" secondItem="K0G-ix-yMp" secondAttribute="centerX" id="lbU-er-ffT"/>
-                            <constraint firstItem="9SE-M0-7TI" firstAttribute="top" secondItem="xsN-sV-Yrd" secondAttribute="top" constant="80" id="t2i-Q6-2uv"/>
+                            <constraint firstItem="ZmY-Nv-G1P" firstAttribute="top" secondItem="9SE-M0-7TI" secondAttribute="bottom" constant="50" id="0Zp-Ny-Axp"/>
+                            <constraint firstItem="eCa-CZ-2Zr" firstAttribute="top" secondItem="OCn-GR-7Mt" secondAttribute="bottom" constant="50" id="3PZ-Ht-yUm"/>
+                            <constraint firstItem="OCn-GR-7Mt" firstAttribute="top" secondItem="xsN-sV-Yrd" secondAttribute="top" constant="100" id="GzZ-BO-a1Q"/>
+                            <constraint firstItem="OCn-GR-7Mt" firstAttribute="centerX" secondItem="K0G-ix-yMp" secondAttribute="centerX" id="K8D-Ge-F4T"/>
+                            <constraint firstItem="eCa-CZ-2Zr" firstAttribute="centerX" secondItem="K0G-ix-yMp" secondAttribute="centerX" id="ePl-fs-nZ9"/>
+                            <constraint firstItem="9SE-M0-7TI" firstAttribute="centerX" secondItem="K0G-ix-yMp" secondAttribute="centerX" id="oo2-MS-4EC"/>
+                            <constraint firstItem="ZmY-Nv-G1P" firstAttribute="centerX" secondItem="K0G-ix-yMp" secondAttribute="centerX" id="tY2-Hn-nNy"/>
+                            <constraint firstItem="9SE-M0-7TI" firstAttribute="top" secondItem="eCa-CZ-2Zr" secondAttribute="bottom" constant="50" id="xhG-u1-fGx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xsN-sV-Yrd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="baseline_account_circle_black_24pt" id="jeU-0d-4Ng"/>
                     <connections>
                         <outlet property="logoutButton" destination="ZmY-Nv-G1P" id="Reu-mT-PbG"/>
+                        <outlet property="nameLabel" destination="eCa-CZ-2Zr" id="dNl-bq-gGJ"/>
+                        <outlet property="profileImageView" destination="OCn-GR-7Mt" id="vxA-yh-Lzo"/>
+                        <outlet property="statusMessageLabel" destination="9SE-M0-7TI" id="v7i-8y-qBG"/>
                         <outlet property="statusMessge" destination="9SE-M0-7TI" id="I9l-4W-f1U"/>
                     </connections>
                 </viewController>
