@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import SCLAlertView
 
 class AccountViewController: UIViewController {
     
@@ -23,7 +24,6 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         
         statusMessge.addTarget(self, action: #selector(setStatusMessage), for: .touchUpInside)
@@ -48,24 +48,20 @@ class AccountViewController: UIViewController {
         }
         let okAction = UIAlertAction(title: "確認", style: .default, handler: { (action) in
             if let textField = alertVC.textFields?.first{
-                let dic = ["statusMessage":textField.text!]
-                let uid = Auth.auth().currentUser?.uid
-                let databaseRef = Database.database().reference()
-                databaseRef.child("users").child(uid!).updateChildValues(dic)
+                let strLength = textField.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+                if strLength?.count == 0{
+                    self.alert(title: "エラー", message: "１文字から入力可能です。", type: "error")
+                }else{
+                    let dic = ["statusMessage":textField.text!]
+                    let uid = Auth.auth().currentUser?.uid
+                    let databaseRef = Database.database().reference()
+                    databaseRef.child("users").child(uid!).updateChildValues(dic)
+                }
             }
         })
-        // MARK: - Observer修正、入力したらボタン活性化に更新
-        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         alertVC.addAction(okAction)
-        okAction.isEnabled = false
-        
-        
-        
-        
-        
-        alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
-            
-        }))
+        alertVC.addAction(cancelAction)
         self.present(alertVC, animated: true, completion: nil)
         
     }
@@ -117,6 +113,32 @@ class AccountViewController: UIViewController {
             print("error")
         }
         
+    }
+    
+    
+    func alert(title:String,message:String,type:String){
+        
+        let alertVC = SCLAlertView()
+        
+        if type == "error"{
+            alertVC.showTitle(
+                title,
+                subTitle: message,
+                style: .error,
+                closeButtonTitle: "確認",
+                colorStyle: 0xFF5C5C,
+                colorTextButton: 0xFFFFFF
+            )
+        }else if type == "edit"{
+            alertVC.showTitle(
+                title,
+                subTitle: message,
+                style: .edit,
+                colorStyle: 0xDDDDFF,
+                colorTextButton: 0xFFFFFF
+            )
+            
+        }
     }
     
 
