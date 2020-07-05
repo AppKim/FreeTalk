@@ -27,6 +27,7 @@
 		0F7F0DE4245BAD36006A57BB /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7F0DE3245BAD36006A57BB /* LoginViewController.storyboard */; };
 		0F8D4CD524614CBF0024346D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D4CD424614CBF0024346D /* UserModel.swift */; };
 		0FA5B585247AA94F00265D5D /* SelectFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5B584247AA94F00265D5D /* SelectFriendViewController.swift */; };
+		0FB4388B24B1CD5500146BF9 /* AccountEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4388A24B1CD5500146BF9 /* AccountEditViewController.swift */; };
 		0FB7E4022461B9740085216B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7E4012461B9740085216B /* ChatViewController.swift */; };
 		0FB7E4042461B97C0085216B /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB7E4032461B97C0085216B /* ChatViewController.storyboard */; };
 		0FB7E4072461BE3A0085216B /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7E4062461BE3A0085216B /* ChatModel.swift */; };
@@ -61,6 +62,7 @@
 		0F8D4CD424614CBF0024346D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0FA5B57F247AA89E00265D5D /* BEMCheckBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BEMCheckBox.h; path = /Users/kimjunseok/Desktop/Swift/App/FreeTalk/FreeTalk/BEMCheckBox.h; sourceTree = "<absolute>"; };
 		0FA5B584247AA94F00265D5D /* SelectFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFriendViewController.swift; sourceTree = "<group>"; };
+		0FB4388A24B1CD5500146BF9 /* AccountEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditViewController.swift; sourceTree = "<group>"; };
 		0FB7E4012461B9740085216B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0FB7E4032461B97C0085216B /* ChatViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatViewController.storyboard; sourceTree = "<group>"; };
 		0FB7E4062461BE3A0085216B /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				0F1AF34B24607A8500CB6965 /* PeopleViewController.swift */,
 				0FFDF317246AE486006E3349 /* ChatRoomsViewController.swift */,
 				0FCF7D7224718E00007DD819 /* AccountViewController.swift */,
+				0FB4388A24B1CD5500146BF9 /* AccountEditViewController.swift */,
 				0F5F9071247C0F73001D4167 /* GroupChatRoomViewController.swift */,
 				0F5F9073247C110C001D4167 /* GroupChatRoomViewController.storyboard */,
 			);
@@ -310,6 +313,7 @@
 				0FA5B585247AA94F00265D5D /* SelectFriendViewController.swift in Sources */,
 				0FFDF318246AE486006E3349 /* ChatRoomsViewController.swift in Sources */,
 				0F1AF34C24607A8500CB6965 /* PeopleViewController.swift in Sources */,
+				0FB4388B24B1CD5500146BF9 /* AccountEditViewController.swift in Sources */,
 				0F7CAA9524597E1E0051B9E2 /* SceneDelegate.swift in Sources */,
 				0F766031245BBFDC00ABE677 /* SignUpViewController.swift in Sources */,
 				0FB7E4072461BE3A0085216B /* ChatModel.swift in Sources */,

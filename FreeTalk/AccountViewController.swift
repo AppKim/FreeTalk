@@ -13,9 +13,16 @@ import SCLAlertView
 
 class AccountViewController: UIViewController {
     
+    @IBOutlet weak var idView: UIView!
+    @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var phonenumberView: UIView!
+    @IBOutlet weak var statusmessageView: UIView!
     @IBOutlet weak var statusMessge: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var statusMessageLabel: UIButton!
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -24,10 +31,16 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        idView.layer.cornerRadius = 20
+        nameView.layer.cornerRadius = 20
+        phonenumberView.layer.cornerRadius = 20
+        statusmessageView.layer.cornerRadius = 20
+        editButton.layer.cornerRadius = 20
+        logoutButton.layer.cornerRadius = 20
         
         statusMessge.addTarget(self, action: #selector(setStatusMessage), for: .touchUpInside)
         logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(showEditAccount), for: .touchUpInside)
         getAccountInfo()
         
         
@@ -114,6 +127,11 @@ class AccountViewController: UIViewController {
         }
         
     }
+    
+    @objc func showEditAccount(){
+        self.performSegue(withIdentifier: "AccountEditSegue", sender: nil)
+    }
+
     
     
     func alert(title:String,message:String,type:String){

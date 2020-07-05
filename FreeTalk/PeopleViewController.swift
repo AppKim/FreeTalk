@@ -34,6 +34,7 @@ class ProfileCell: UITableViewCell {
 class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     var array : [UserModel] = []
+    
     @IBOutlet weak var profileTable: UITableView!
     @IBOutlet weak var selectFriendButton: UIButton!
     
@@ -122,14 +123,10 @@ class PeopleViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         statusMessageBackground.backgroundColor = UIColor.gray
         
-        
-        
         cell.profileImageUrl.layer.cornerRadius =  cell.profileImageUrl.frame.size.width/2
         cell.profileImageUrl.clipsToBounds = true
         cell.profileImageUrl.kf.setImage(with: url)
         cell.userName.text = array[indexPath.row].userName
-        
-        
         
         return cell
     }

@@ -36,7 +36,9 @@ class SignUpViewController: UIViewController,UINavigationControllerDelegate,UIIm
         color = remoteConfig["splash_background"].stringValue
         //statusBar.backgroundColor = UIColor(hex: color)
         submitButton.backgroundColor = UIColor(hex: color)
+        submitButton.layer.cornerRadius = 20
         cancelButton.backgroundColor = UIColor(hex: color)
+        cancelButton.layer.cornerRadius = 20
         
         // action attache
         submitButton.addTarget(self, action: #selector(submitEvent), for: .touchUpInside)

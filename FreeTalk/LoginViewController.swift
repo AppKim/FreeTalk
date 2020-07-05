@@ -42,7 +42,9 @@ class LoginViewController: UIViewController {
         
         //statusBar.backgroundColor = UIColor(hex: color)
         signinButton.backgroundColor = UIColor(hex: color)
+        signinButton.layer.cornerRadius = 20
         signupButton.backgroundColor = UIColor(hex: color)
+        signupButton.layer.cornerRadius = 20
         
         // action attache
         signupButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
